@@ -1,0 +1,10 @@
+{
+    "email": "test@gmail.com",
+    "godiste": "2000-09-02T22:00:00Z[UTC]",
+    "idMesto": {
+        "idm": 1,
+        "naziv": "Beograd"
+    },
+    "ime": "test",
+    "pol": "musko"
+}

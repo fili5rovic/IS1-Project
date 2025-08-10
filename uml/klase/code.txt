@@ -1,0 +1,124 @@
+@startuml
+class Mesto {
+  idm : int
+  naziv : varchar
+}
+
+class Korisnik {
+  idk : int
+  ime : varchar
+  email : varchar
+  godiste : date
+  pol : enum
+  id_mesto : int
+}
+
+Mesto "1" -- "0..*" Korisnik
+
+@enduml
+
+
+-------------------------------------------------------------------
+
+
+
+
+@startuml
+class Kategorija {
+  idk : int
+  naziv : varchar
+}
+
+class AudioSnimak {
+  ida : int
+  naziv : varchar
+  trajanje : int
+  vlasnik_idk : int
+  datum : datetime
+}
+
+class AudioKategorija {
+  id_audio : int
+  id_kategorija : int
+}
+
+class Korisnik {
+  idk : int
+  ime : varchar
+  email : varchar
+  godiste : date
+  pol : enum
+  id_mesto : int
+}
+
+AudioSnimak "1" -- "0..*" AudioKategorija : ima >
+Kategorija "1" -- "0..*" AudioKategorija : ima >
+Korisnik "1" -- "0..*" AudioSnimak : vlasnik >
+
+@enduml
+
+
+-------------------------------------------------------------------
+
+@startuml
+class Paket {
+  idp : int
+  cena : decimal
+}
+
+class Pretplata {
+  idp : int
+  datum_od : datetime
+  idk : int
+  cena : decimal
+  id_paket : int
+}
+
+class Slusanje {
+  id_korisnik : int
+  id_audio : int
+  datum_slusanja_od : datetime
+  sekunda_od : int
+  sekunda_odslusano : int
+}
+
+class Ocena {
+  id_korisnik : int
+  id_audio : int
+  ocena : int
+  datum : datetime
+}
+
+class Omiljeni {
+  id_korisnika : int
+  id_audio : int
+}
+
+class Korisnik {
+  idk : int
+  ime : varchar
+  email : varchar
+  godiste : date
+  pol : enum
+  id_mesto : int
+}
+
+class AudioSnimak {
+  ida : int
+  naziv : varchar
+  trajanje : int
+  vlasnik_idk : int
+  datum : datetime
+}
+
+Paket "1" -- "0..*" Pretplata : uključen u >
+Korisnik "1" -- "0..1" Pretplata : ima >
+Korisnik "1" -- "0..*" Slusanje : sluša >
+AudioSnimak "1" -- "0..*" Slusanje : je slušano >
+Korisnik "1" -- "0..*" Ocena : ocenjuje >
+AudioSnimak "1" -- "0..*" Ocena : je ocenjen >
+Korisnik "1" -- "0..*" Omiljeni : dodaje >
+AudioSnimak "1" -- "0..*" Omiljeni : je omiljen >
+
+@enduml
+

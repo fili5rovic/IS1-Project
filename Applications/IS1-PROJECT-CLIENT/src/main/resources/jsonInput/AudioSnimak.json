@@ -1,0 +1,16 @@
+{
+    "datum": "2020-10-11T23:00:00Z[UTC]",
+    "naziv": "TEST1",
+    "trajanje": 40,
+    "vlasnikIdk": {
+        "email": "filip@gmail.com",
+        "godiste": "2003-09-02T22:00:00Z[UTC]",
+        "idMesto": {
+            "idm": 1,
+            "naziv": "Beograd"
+        },
+        "idk": 1,
+        "ime": "Filip",
+        "pol": "musko"
+    }
+}

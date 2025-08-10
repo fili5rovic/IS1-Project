@@ -1,0 +1,52 @@
+@startuml
+title Dijagram sekvence - Kreiranje pretplate
+
+actor Klijent as client
+participant "SubscriptionResource" as server
+participant "JMSUtil" as util
+participant "SubSystem3" as subsystem3
+participant "JPAManager" as jpa
+database "Baza podataka" as db
+
+client -> server: POST /SubscriptionResource/Pretplata/new\n(Pretplata objekat)
+activate server
+
+server -> util: JMSUtil.createEntity(m, connection, queue)
+activate util
+
+util -> util: Kreira JMSContext i JMSProducer
+util -> subsystem3: TextMessage("create") sa MESSAGE_TYPE='REQUEST'
+activate subsystem3
+
+util -> subsystem3: ObjectMessage(Pretplata objekat) sa MESSAGE_TYPE='REQUEST'
+
+subsystem3 -> subsystem3: listen() - čeka poruke
+subsystem3 -> subsystem3: handleMessageCodeCalls("create")
+subsystem3 -> subsystem3: handleCreation()
+
+subsystem3 -> jpa: persistObject(Pretplata objekat)
+activate jpa
+
+jpa -> db: em.persist(Pretplata objekat)
+activate db
+db --> jpa: Potvrda persiste
+deactivate db
+
+jpa -> jpa: em.getTransaction().commit()
+jpa --> subsystem3: Collections.singletonList(Pretplata objekat)
+deactivate jpa
+
+subsystem3 -> subsystem3: sendAllObjects(List<Serializable>)
+subsystem3 -> util: TextMessage("1") sa MESSAGE_TYPE='RESPONSE'
+subsystem3 -> util: ObjectMessage(Pretplata objekat) sa MESSAGE_TYPE='RESPONSE'
+deactivate subsystem3
+
+util -> util: Prima TextMessage sa brojem objekata
+util -> util: Prima ObjectMessage sa Pretplata objektom
+util --> server: Response.ok(Pretplata objekat)
+deactivate util
+
+server --> client: HTTP Response 200 OK\n(Kreirana pretplata)
+deactivate server
+
+@enduml

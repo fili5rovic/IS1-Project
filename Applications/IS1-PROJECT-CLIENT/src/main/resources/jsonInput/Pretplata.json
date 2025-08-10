@@ -1,0 +1,19 @@
+{
+    "cena": 1000.00,
+    "datumOd": "2024-07-14T22:00:00Z[UTC]",
+    "idPaket": {
+        "cena": 1000.00,
+        "idp": 1
+    },
+    "idk": {
+        "email": "test@gmail.com",
+        "godiste": "2000-09-02T22:00:00Z[UTC]",
+        "idMesto": {
+            "idm": 1,
+            "naziv": "Beograd"
+        },
+        "idk": 16,
+        "ime": "test",
+        "pol": "musko"
+    }
+}

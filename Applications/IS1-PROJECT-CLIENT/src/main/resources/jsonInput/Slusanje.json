@@ -1,0 +1,37 @@
+{
+    "audioSnimak": {
+        "datum": "2025-02-09T23:00:00Z[UTC]",
+        "ida": 3,
+        "naziv": "ETF",
+        "trajanje": 209,
+        "vlasnikIdk": {
+            "email": "jovan@gmail.com",
+            "godiste": "2002-07-14T22:00:00Z[UTC]",
+            "idMesto": {
+                "idm": 1,
+                "naziv": "Beograd"
+            },
+            "idk": 2,
+            "ime": "Jovan",
+            "pol": "musko"
+        }
+    },
+    "datumSlusanjaOd": "2025-01-02T23:00:00Z[UTC]",
+    "korisnik": {
+        "email": "lazar@gmail",
+        "godiste": "2003-07-30T22:00:00Z[UTC]",
+        "idMesto": {
+            "idm": 1,
+            "naziv": "Beograd"
+        },
+        "idk": 3,
+        "ime": "Lazar",
+        "pol": "musko"
+    },
+    "sekundaOd": 0,
+    "sekundaOdslusano": 30,
+    "slusanjePK": {
+        "idAudio": 3,
+        "idKorisnik": 3
+    }
+}
